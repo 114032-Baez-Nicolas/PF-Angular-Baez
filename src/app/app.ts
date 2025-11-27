@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { filter } from 'rxjs/operators';
 import { Usuario } from './core/models/usuario.interface';
 import { AuthService } from './core/services/auth.service';
-import { setAuthUser } from './core/store/auth/auth.actions';
+import { setAuthUser, clearAuthUser } from './core/store/auth/auth.actions';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +25,8 @@ export class App implements OnInit {
         this.mostrarLayout = this.debeMostrarLayout(event.url);
       });
     this.mostrarLayout = this.debeMostrarLayout(this.router.url);
+
+    this.setupStorageListener();
   }
 
   ngOnInit(): void {
@@ -38,6 +40,23 @@ export class App implements OnInit {
       const user: Usuario = JSON.parse(userJson);
       this.store.dispatch(setAuthUser({ payload: user }));
     }
+  }
+
+  private setupStorageListener(): void {
+    window.addEventListener('storage', (event) => {
+      if (event.key === 'logoutEvent' && event.newValue) {
+        this.store.dispatch(clearAuthUser());
+      }
+
+      if (event.key === 'authEvent' && event.newValue) {
+        const userJson = localStorage.getItem('authUser');
+        if (userJson) {
+          const user = JSON.parse(userJson);
+          this.store.dispatch(setAuthUser({ payload: user }));
+          this.router.navigate(['/inicio']);
+        }
+      }
+    });
   }
 
   @HostListener('window:resize')
