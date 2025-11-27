@@ -1,7 +1,11 @@
 @if (loading$ | async) {
   <div class="loading-overlay">
     <div class="loading-card">
-      <mat-spinner></mat-spinner>
+      <mat-progress-spinner
+        mode="indeterminate"
+        color="accent"
+        diameter="60"
+      ></mat-progress-spinner>
       <p>Procesando...</p>
     </div>
   </div>
