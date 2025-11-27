@@ -1,0 +1,29 @@
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.titulo-app {
+  margin-left: 16px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.espaciador {
+  flex: 1 1 auto;
+}
+
+.theme-toggle-btn {
+  margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+  .titulo-app {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+  .theme-toggle-btn {
+    margin-right: 4px;
+  }
+}

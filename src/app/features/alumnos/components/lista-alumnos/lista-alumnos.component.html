@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="header-section">
+    <h1 appTituloResaltado>Gestión de Alumnos</h1>
+
+    <div class="acciones-principales">
+      <mat-form-field appearance="outline" class="buscador">
+        <mat-label>Buscar alumno</mat-label>
+        <input
+          matInput
+          [(ngModel)]="busqueda"
+          (input)="filtrarAlumnos()"
+          placeholder="Nombre, apellido o email..."
+        />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="irANuevoAlumno()">
+        <mat-icon>add</mat-icon>
+        Nuevo Alumno
+      </button>
+    </div>
+  </div>
+
+  @if (alumnosFiltrados.length > 0) {
+  <div class="alumnos-grid">
+    @for (alumno of alumnosFiltrados; track alumno.id) {
+    <mat-card class="alumno-card">
+      <mat-card-header>
+        <div mat-card-avatar class="avatar-circle">
+          {{ alumno.nombre.charAt(0) }}{{ alumno.apellido.charAt(0) }}
+        </div>
+        <mat-card-title>{{ alumno | nombreCompleto }}</mat-card-title>
+        <mat-card-subtitle>{{ alumno.email }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="info-detalle">
+          <div class="info-item">
+            <mat-icon>event</mat-icon>
+            <span>Inscripción: {{ alumno.fechaInscripcion | date : 'dd/MM/yyyy' }}</span>
+          </div>
+          <div class="info-item">
+            <mat-icon>{{ alumno.activo ? 'check_circle' : 'cancel' }}</mat-icon>
+            <span>{{ alumno.activo ? 'Activo' : 'Inactivo' }}</span>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="verDetalle(alumno)">
+          <mat-icon>visibility</mat-icon>
+          Ver
+        </button>
+        <button mat-button color="accent" (click)="editarAlumno(alumno)">
+          <mat-icon>edit</mat-icon>
+          Editar
+        </button>
+        <button mat-button color="warn" (click)="eliminarAlumno(alumno)">
+          <mat-icon>delete</mat-icon>
+          Eliminar
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    }
+  </div>
+  } @else {
+  <mat-card class="sin-resultados">
+    <mat-card-content>
+      <mat-icon>search_off</mat-icon>
+      <h2>No se encontraron alumnos</h2>
+      @if (busqueda) {
+      <p>Probá con otros términos</p>
+      } @else {
+      <p>No hay alumnos registrados</p>
+      }
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

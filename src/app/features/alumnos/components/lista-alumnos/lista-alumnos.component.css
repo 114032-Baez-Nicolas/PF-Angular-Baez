@@ -1,0 +1,279 @@
+.container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header-section {
+  margin-bottom: 30px;
+}
+
+.header-section h1 {
+  margin-bottom: 20px;
+}
+
+.acciones-principales {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.buscador {
+  flex: 1;
+  min-width: 250px;
+}
+
+.alumnos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+.alumno-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px !important;
+  background-color: #fff !important;
+  border: 1px solid rgba(63, 81, 181, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 20px rgba(63, 81, 181, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.alumno-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #3f51b5, #9c27b0, #e91e63);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.alumno-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(63, 81, 181, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: rgba(63, 81, 181, 0.2);
+}
+
+.alumno-card:hover::before {
+  opacity: 1;
+}
+
+mat-card-header {
+  padding: 20px 20px 0 20px !important;
+  margin-bottom: 16px !important;
+}
+
+.avatar-circle {
+  background: linear-gradient(135deg, #3f51b5, #5c6bc0) !important;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(63, 81, 181, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+mat-card-title {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #2c3e50 !important;
+  margin-bottom: 4px !important;
+}
+
+mat-card-subtitle {
+  font-size: 14px !important;
+  color: #7986cb !important;
+  font-weight: 500 !important;
+}
+
+mat-card-content {
+  padding: 0 20px 16px 20px !important;
+}
+
+.info-detalle {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(44, 62, 80, 0.8);
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(63, 81, 181, 0.05);
+  transition: all 0.2s ease;
+}
+
+.info-item:hover {
+  background: rgba(63, 81, 181, 0.1);
+  transform: translateX(4px);
+}
+
+.info-item mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: #3f51b5;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 20px 20px 20px !important;
+  gap: 8px;
+}
+
+mat-card-actions button {
+  border-radius: 20px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  text-transform: none !important;
+}
+
+mat-card-actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sin-resultados {
+  text-align: center;
+  padding: 50px 40px;
+  margin-top: 40px;
+  border-radius: 20px !important;
+  background: linear-gradient(145deg, #f8f9fa, #ffffff);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.sin-resultados mat-icon {
+  font-size: 72px;
+  width: 72px;
+  height: 72px;
+  color: #bdbdbd;
+  margin-bottom: 24px;
+  opacity: 0.8;
+}
+
+.sin-resultados h2 {
+  color: #546e7a;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.sin-resultados p {
+  color: #90a4ae;
+  font-size: 16px;
+}
+
+body.dark-theme .alumno-card,
+body[color-scheme='dark'] .alumno-card,
+body.dark-theme .alumno-card.mat-mdc-card,
+body[color-scheme='dark'] .alumno-card.mat-mdc-card {
+  background-color: #1e1e1e !important;
+  border: 1px solid #333 !important;
+  color: #e0e0e0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+body.dark-theme .alumno-card:hover,
+body[color-scheme='dark'] .alumno-card:hover {
+  border-color: var(--mat-sys-primary, #bb86fc) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28), 0 8px 16px rgba(0, 0, 0, 0.12) !important;
+}
+
+body.dark-theme .alumno-card::before,
+body[color-scheme='dark'] .alumno-card::before {
+  background: linear-gradient(
+    90deg,
+    var(--mat-sys-primary, #bb86fc),
+    var(--mat-sys-secondary, #cf6679),
+    var(--mat-sys-tertiary, #03dac6)
+  ) !important;
+}
+
+body.dark-theme .avatar-circle,
+body[color-scheme='dark'] .avatar-circle {
+  background: linear-gradient(135deg, #bb86fc, #cf6679) !important;
+  border-color: rgba(30, 30, 30, 0.9) !important;
+  box-shadow: 0 4px 12px rgba(187, 134, 252, 0.3) !important;
+}
+
+body.dark-theme mat-card-title,
+body[color-scheme='dark'] mat-card-title {
+  color: #e0e0e0 !important;
+}
+
+body.dark-theme mat-card-subtitle,
+body[color-scheme='dark'] mat-card-subtitle {
+  color: #bb86fc !important;
+}
+
+body.dark-theme .info-item,
+body[color-scheme='dark'] .info-item {
+  color: rgba(224, 224, 224, 0.9) !important;
+  background: rgba(187, 134, 252, 0.15) !important;
+}
+
+body.dark-theme .info-item:hover,
+body[color-scheme='dark'] .info-item:hover {
+  background: rgba(187, 134, 252, 0.25) !important;
+}
+
+body.dark-theme .info-item mat-icon,
+body[color-scheme='dark'] .info-item mat-icon {
+  color: #bb86fc !important;
+}
+
+body.dark-theme .sin-resultados,
+body[color-scheme='dark'] .sin-resultados {
+  background: linear-gradient(145deg, #1e1e1e, #2d2d30) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.dark-theme .sin-resultados h2,
+body[color-scheme='dark'] .sin-resultados h2 {
+  color: #bb86fc !important;
+}
+
+body.dark-theme .sin-resultados p,
+body[color-scheme='dark'] .sin-resultados p {
+  color: #9aa0a6 !important;
+}
+
+body.dark-theme .sin-resultados mat-icon,
+body[color-scheme='dark'] .sin-resultados mat-icon {
+  color: #666666 !important;
+}
+
+@media (max-width: 768px) {
+  .alumnos-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .acciones-principales {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .alumno-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+}

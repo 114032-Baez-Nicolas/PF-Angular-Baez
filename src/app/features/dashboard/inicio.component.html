@@ -1,0 +1,32 @@
+<div class="inicio-container">
+  <mat-card class="bienvenida-card">
+    <mat-card-content>
+      <div class="icono-bienvenida">
+        <mat-icon>waving_hand</mat-icon>
+      </div>
+      <h1 appTituloResaltado>¡Bienvenido, {{ nombreUsuario }}!</h1>
+      <p class="mensaje">Sistema de Gestión Académica</p>
+
+      <div class="accesos-rapidos">
+        <h2>Accesos Rápidos</h2>
+        <div class="cards-grid">
+          <mat-card class="accion-card" routerLink="/alumnos">
+            <div class="accion-card-header">
+              <mat-icon>school</mat-icon>
+              <h3>Alumnos</h3>
+            </div>
+            <p>Gestionar alumnos</p>
+          </mat-card>
+
+          <mat-card class="accion-card" routerLink="/cursos">
+            <div class="accion-card-header">
+              <mat-icon>menu_book</mat-icon>
+              <h3>Cursos</h3>
+            </div>
+            <p>Gestionar cursos</p>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

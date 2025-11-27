@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="header-section">
+    <h1 appTituloResaltado>Gestión de Cursos</h1>
+
+    <div class="acciones-principales">
+      <mat-form-field appearance="outline" class="buscador">
+        <mat-label>Buscar curso</mat-label>
+        <input
+          matInput
+          [(ngModel)]="busqueda"
+          (input)="filtrarCursos()"
+          placeholder="Nombre o descripción..."
+        />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="irANuevoCurso()">
+        <mat-icon>add</mat-icon>
+        Nuevo Curso
+      </button>
+    </div>
+  </div>
+
+  @if (cursosFiltrados.length > 0) {
+  <div class="cursos-grid">
+    @for (curso of cursosFiltrados; track curso.id) {
+    <mat-card class="curso-card">
+      <mat-card-header>
+        <mat-card-title>{{ curso.nombre }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p class="descripcion">{{ curso.descripcion }}</p>
+
+        <div class="fechas-info">
+          <div class="fecha-item">
+            <mat-icon>event</mat-icon>
+            <span>Inicio: {{ curso.fechaInicio | date : 'dd/MM/yyyy' }}</span>
+          </div>
+          <div class="fecha-item">
+            <mat-icon>event_available</mat-icon>
+            <span>Fin: {{ curso.fechaFin | date : 'dd/MM/yyyy' }}</span>
+          </div>
+        </div>
+
+        <div class="estado-barra">
+          @if (curso.estado === 'activo') {
+          <div class="estado-activo">
+            <mat-icon>check_circle</mat-icon>
+            <span>Activo</span>
+          </div>
+          } @else {
+          <div class="estado-inactivo">
+            <mat-icon>cancel</mat-icon>
+            <span>Inactivo</span>
+          </div>
+          }
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="verDetalle(curso)">
+          <mat-icon>visibility</mat-icon>
+          Ver Detalle
+        </button>
+        <button mat-button color="accent" (click)="editarCurso(curso)">
+          <mat-icon>edit</mat-icon>
+          Editar
+        </button>
+        <button mat-button color="warn" (click)="eliminarCurso(curso)">
+          <mat-icon>delete</mat-icon>
+          Eliminar
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    }
+  </div>
+  } @else {
+  <mat-card class="sin-resultados">
+    <mat-card-content>
+      <mat-icon>search_off</mat-icon>
+      <h2>No se encontraron cursos</h2>
+      @if (busqueda) {
+      <p>Intentá con otros términos de búsqueda</p>
+      } @else {
+      <p>Todavía no hay cursos cargados</p>
+      }
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

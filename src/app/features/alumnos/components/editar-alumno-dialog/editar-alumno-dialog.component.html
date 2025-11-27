@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>Editar Alumno</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="alumnoForm">
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="campo-medio">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+        @if (alumnoForm.get('nombre')?.invalid && alumnoForm.get('nombre')?.touched) {
+        <mat-error>{{ obtenerErrorNombre() }}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="campo-medio">
+        <mat-label>Apellido</mat-label>
+        <input matInput formControlName="apellido" />
+        @if (alumnoForm.get('apellido')?.invalid && alumnoForm.get('apellido')?.touched) {
+        <mat-error>{{ obtenerErrorApellido() }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="campo-completo">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" />
+        @if (alumnoForm.get('email')?.invalid && alumnoForm.get('email')?.touched) {
+        <mat-error>{{ obtenerErrorEmail() }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="campo-medio">
+        <mat-label>Fecha de Inscripción</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaInscripcion" />
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div class="campo-medio checkbox-container">
+        <mat-checkbox formControlName="activo">Activo</mat-checkbox>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onGuardar()" [disabled]="!alumnoForm.valid">
+    Guardar
+  </button>
+</mat-dialog-actions>

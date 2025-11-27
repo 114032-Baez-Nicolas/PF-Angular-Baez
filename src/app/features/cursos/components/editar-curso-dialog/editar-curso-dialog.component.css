@@ -1,0 +1,39 @@
+mat-dialog-content {
+  min-width: 500px;
+  padding: 20px 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.campo-completo {
+  width: 100%;
+}
+
+.campo-medio {
+  flex: 1;
+}
+
+mat-dialog-actions {
+  padding: 16px 24px;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  mat-dialog-content {
+    min-width: 300px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+}

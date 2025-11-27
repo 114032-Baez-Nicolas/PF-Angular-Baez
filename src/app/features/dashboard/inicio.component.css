@@ -1,0 +1,140 @@
+.inicio-container {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bienvenida-card {
+  padding: 40px;
+  text-align: center;
+}
+
+.icono-bienvenida {
+  margin-bottom: 20px;
+}
+
+.icono-bienvenida mat-icon {
+  font-size: 80px;
+  width: 80px;
+  height: 80px;
+  color: #3f51b5;
+}
+
+h1 {
+  font-size: 36px;
+  margin: 20px 0;
+  color: #333;
+}
+
+.mensaje {
+  font-size: 20px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.accesos-rapidos {
+  margin-top: 40px;
+}
+
+.accesos-rapidos h2 {
+  font-size: 24px;
+  color: #3f51b5;
+  margin-bottom: 30px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+.accion-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px !important;
+  background-color: #fff !important;
+  border: 1px solid rgba(63, 81, 181, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 20px rgba(63, 81, 181, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 28px 24px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  min-height: 160px;
+}
+
+.accion-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(63, 81, 181, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: rgba(63, 81, 181, 0.2);
+}
+
+.accion-card mat-icon {
+  font-size: 36px;
+  width: 36px;
+  height: 36px;
+  color: #3f51b5;
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+
+.accion-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.accion-card h3 {
+  font-size: 18px;
+  color: #2c3e50;
+  font-weight: 600;
+  margin: 0;
+}
+
+.accion-card p {
+  color: #7986cb;
+  font-size: 14px;
+  margin: 0;
+}
+
+body.dark-theme .accion-card,
+body[color-scheme='dark'] .accion-card {
+  background-color: #1e1e1e !important;
+  border: 1px solid #333 !important;
+  color: #e0e0e0 !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18), 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+body.dark-theme .accion-card h3,
+body[color-scheme='dark'] .accion-card h3 {
+  color: #e0e0e0 !important;
+}
+
+body.dark-theme .accion-card p,
+body[color-scheme='dark'] .accion-card p {
+  color: #bb86fc !important;
+}
+
+@media (max-width: 768px) {
+  .bienvenida-card {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .mensaje {
+    font-size: 16px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

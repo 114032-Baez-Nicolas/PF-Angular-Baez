@@ -1,0 +1,67 @@
+<h2 mat-dialog-title>Editar Curso</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="cursoForm">
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="campo-completo">
+        <mat-label>Nombre del Curso</mat-label>
+        <input matInput formControlName="nombre" />
+        @if (cursoForm.get('nombre')?.invalid && cursoForm.get('nombre')?.touched) {
+        <mat-error>{{ obtenerErrorNombre() }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="campo-completo">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput formControlName="descripcion" rows="4"></textarea>
+        @if (cursoForm.get('descripcion')?.invalid && cursoForm.get('descripcion')?.touched) {
+        <mat-error>{{ obtenerErrorDescripcion() }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="campo-medio">
+        <mat-label>Fecha de Inicio</mat-label>
+        <input matInput [matDatepicker]="pickerInicio" formControlName="fechaInicio" />
+        <mat-datepicker-toggle matIconSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+        <mat-datepicker #pickerInicio></mat-datepicker>
+        @if (cursoForm.get('fechaInicio')?.invalid && cursoForm.get('fechaInicio')?.touched) {
+        <mat-error>{{ obtenerErrorFechaInicio() }}</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="campo-medio">
+        <mat-label>Fecha de Fin</mat-label>
+        <input matInput [matDatepicker]="pickerFin" formControlName="fechaFin" />
+        <mat-datepicker-toggle matIconSuffix [for]="pickerFin"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFin></mat-datepicker>
+        @if (cursoForm.get('fechaFin')?.invalid && cursoForm.get('fechaFin')?.touched) {
+        <mat-error>{{ obtenerErrorFechaFin() }}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="campo-medio">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="estado">
+          @for (estado of estadosDisponibles; track estado.valor) {
+          <mat-option [value]="estado.valor">
+            {{ estado.etiqueta }}
+          </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancelar()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onGuardar()" [disabled]="!cursoForm.valid">
+    Guardar
+  </button>
+</mat-dialog-actions>

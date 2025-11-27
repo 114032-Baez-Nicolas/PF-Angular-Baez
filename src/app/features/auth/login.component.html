@@ -1,0 +1,143 @@
+<div class="login-container">
+  <button
+    mat-icon-button
+    class="theme-toggle"
+    (click)="toggleTheme()"
+    [matTooltip]="isDarkMode ? 'Modo claro' : 'Modo oscuro'"
+  >
+    <mat-icon>{{ isDarkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+
+  @if (loading) {
+  <div
+    class="loading-overlay"
+    [ngClass]="{ 'loading-overlay-dark': isDarkMode, 'loading-overlay-light': !isDarkMode }"
+  >
+    <div
+      class="loading-content"
+      [ngClass]="{ 'loading-content-dark': isDarkMode, 'loading-content-light': !isDarkMode }"
+    >
+      <mat-progress-spinner
+        mode="indeterminate"
+        color="accent"
+        diameter="60"
+      ></mat-progress-spinner>
+      <div
+        class="loading-text"
+        [ngClass]="{ 'loading-text-dark': isDarkMode, 'loading-text-light': !isDarkMode }"
+      >
+        Procesando...
+      </div>
+    </div>
+  </div>
+  } @if (!loading) {
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>
+        @if (mostrarRegistro) {
+        <h1>Registrarse</h1>
+        } @else {
+        <h1>Iniciar Sesión</h1>
+        }
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      @if (!mostrarRegistro) {
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <mat-form-field appearance="outline" class="campo-completo">
+          <mat-label>Correo</mat-label>
+          <input matInput formControlName="username" />
+          <mat-icon matPrefix>mail</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="campo-completo">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            [type]="hidePasswordLogin ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <mat-icon matPrefix>lock</mat-icon>
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="togglePasswordLogin()"
+            tabindex="-1"
+          >
+            <mat-icon>{{ hidePasswordLogin ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="boton-completo"
+          [disabled]="!loginForm.valid || loading"
+        >
+          Ingresar
+        </button>
+        <button
+          mat-button
+          type="button"
+          class="boton-completo"
+          (click)="cambiarModo()"
+          [disabled]="loading"
+        >
+          ¿No tenés cuenta? Registrate
+        </button>
+      </form>
+      } @if (mostrarRegistro) {
+      <form [formGroup]="registroForm" (ngSubmit)="onRegistro()">
+        <mat-form-field appearance="outline" class="campo-completo">
+          <mat-label>Nombre completo</mat-label>
+          <input matInput formControlName="nombre" />
+          <mat-icon matPrefix>badge</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="campo-completo">
+          <mat-label>Correo</mat-label>
+          <input matInput formControlName="username" />
+          <mat-icon matPrefix>mail</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="campo-completo">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            [type]="hidePasswordRegistro ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <mat-icon matPrefix>lock</mat-icon>
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="togglePasswordRegistro()"
+            tabindex="-1"
+          >
+            <mat-icon>{{ hidePasswordRegistro ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="boton-completo"
+          [disabled]="!registroForm.valid || loading"
+        >
+          Registrarse
+        </button>
+        <button
+          mat-button
+          type="button"
+          class="boton-completo"
+          (click)="cambiarModo()"
+          [disabled]="loading"
+        >
+          ¿Ya tenés cuenta? Iniciá sesión
+        </button>
+      </form>
+      }
+    </mat-card-content>
+  </mat-card>
+  }
+</div>
