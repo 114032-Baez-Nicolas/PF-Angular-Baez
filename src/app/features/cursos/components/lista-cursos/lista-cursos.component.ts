@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Curso } from '../../models/curso.interface';
 import { CursosActions, selectCursos, selectCursosLoading } from '../../store';
@@ -15,29 +16,37 @@ import { EditarCursoDialogComponent } from '../editar-curso-dialog/editar-curso-
   standalone: false,
 })
 export class ListaCursosComponent implements OnInit, OnDestroy {
-  ngOnDestroy(): void {
-    this.store.dispatch(CursosActions.clearCursos());
-  }
   cursos$: Observable<Curso[]>;
   loading$: Observable<boolean>;
   cursosFiltrados: Curso[] = [];
   busqueda: string = '';
+  private destroy$ = new Subject<void>();
 
-  constructor(private store: Store, private router: Router, private dialog: MatDialog) {
+  constructor(
+    private store: Store,
+    private router: Router,
+    private dialog: MatDialog
+  ) {
     this.cursos$ = this.store.select(selectCursos);
     this.loading$ = this.store.select(selectCursosLoading);
   }
 
   ngOnInit(): void {
     this.store.dispatch(CursosActions.loadCursos());
-    this.cursos$.subscribe((cursos) => {
+    this.cursos$.pipe(takeUntil(this.destroy$)).subscribe((cursos) => {
       this.cursosFiltrados = cursos;
     });
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+    this.store.dispatch(CursosActions.clearCursos());
+  }
+
   filtrarCursos(): void {
     const termino = this.busqueda.toLowerCase().trim();
-    this.cursos$.subscribe((cursos) => {
+    this.cursos$.pipe(takeUntil(this.destroy$)).subscribe((cursos) => {
       if (!termino) {
         this.cursosFiltrados = [...cursos];
       } else {
