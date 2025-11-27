@@ -79,9 +79,11 @@
 </div>
 <div class="container">
   @if (loading$ | async) {
-  <div class="loading-container">
-    <mat-spinner></mat-spinner>
-    <p>Cargando alumnos...</p>
+  <div class="loading-overlay">
+    <div class="loading-card">
+      <mat-spinner></mat-spinner>
+      <p>Procesando...</p>
+    </div>
   </div>
   } @else {
   <div class="header-section">

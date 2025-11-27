@@ -11,8 +11,10 @@ import { AppRoutingModule } from './app-routing-module';
 import { rootReducer } from './core/store';
 import { AuthEffects } from './core/store/auth/auth.effects';
 import { AlumnosModule } from './features/alumnos/alumnos.module';
+import { AlumnosEffects } from './features/alumnos/store';
 import { AuthModule } from './features/auth/auth.module';
 import { CursosModule } from './features/cursos/cursos.module';
+import { CursosEffects } from './features/cursos/store';
 import { DashboardModule } from './features/dashboard/dashboard.module';
 import { LayoutModule } from './layout/layout.module';
 import { SharedModule } from './shared/shared.module';
@@ -31,11 +33,10 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     HttpClientModule,
     StoreModule.forRoot(rootReducer),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, CursosEffects, AlumnosEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: false }),
   ],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
 })
-export class AppModule {
-}
+export class AppModule {}

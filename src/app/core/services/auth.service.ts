@@ -31,7 +31,14 @@ export class AuthService {
         if (usuarios.length > 0) {
           return { success: false, message: 'El usuario ya existe' };
         }
-        const nuevoUsuario: Usuario = { id: uuidv4(), username, password, nombre };
+        const nuevoUsuario: Usuario = {
+          id: uuidv4(),
+          username,
+          email: username,
+          password,
+          nombre,
+          role: 'USER',
+        };
         this.http.post<Usuario>(this.API_URL, nuevoUsuario).subscribe();
         return { success: true, message: 'Usuario registrado correctamente' };
       }),

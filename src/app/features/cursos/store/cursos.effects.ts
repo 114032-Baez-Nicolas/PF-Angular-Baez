@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, delay, map, mergeMap, of } from 'rxjs';
 import { CursosService } from '../../../core/services/cursos.service';
@@ -6,16 +6,26 @@ import { CursosActions } from './cursos.actions';
 
 @Injectable()
 export class CursosEffects {
+  private actions$ = inject(Actions);
+  private cursosService = inject(CursosService);
+
   loadCursos$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CursosActions.loadCursos),
       delay(1500),
-      mergeMap(() =>
-        this.cursosService.obtenerCursos().pipe(
-          map((cursos) => CursosActions.loadCursosSuccess({ cursos })),
-          catchError((error) => of(CursosActions.loadCursosFailure({ error })))
-        )
-      )
+      mergeMap(() => {
+        console.log('🔄 Cargando cursos desde el servidor...');
+        return this.cursosService.obtenerCursos().pipe(
+          map((cursos) => {
+            console.log('✅ Cursos cargados:', cursos);
+            return CursosActions.loadCursosSuccess({ cursos });
+          }),
+          catchError((error) => {
+            console.error('❌ Error al cargar cursos:', error);
+            return of(CursosActions.loadCursosFailure({ error }));
+          })
+        );
+      })
     )
   );
 
@@ -54,6 +64,4 @@ export class CursosEffects {
       )
     )
   );
-
-  constructor(private actions$: Actions, private cursosService: CursosService) {}
 }
