@@ -17,7 +17,11 @@ export class App implements OnInit {
   mostrarLayout = true;
   isMobile = false;
 
-  constructor(private router: Router, private authService: AuthService, private store: Store) {
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private store: Store
+  ) {
     this.checkScreenSize();
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -25,7 +29,6 @@ export class App implements OnInit {
         this.mostrarLayout = this.debeMostrarLayout(event.url);
       });
     this.mostrarLayout = this.debeMostrarLayout(this.router.url);
-
     this.setupStorageListener();
   }
 

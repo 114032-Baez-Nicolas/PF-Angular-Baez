@@ -43,7 +43,7 @@ export class AuthEffects {
   private setupStorageListener(): void {
     window.addEventListener('storage', (event) => {
       if (event.key === 'logoutEvent' && event.newValue) {
-        this.store.dispatch(clearAuthUser());
+        this.router.navigate(['/login']);
       }
 
       if (event.key === 'authEvent' && event.newValue) {
