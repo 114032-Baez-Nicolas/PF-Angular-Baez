@@ -37,4 +37,5 @@ import { SharedModule } from './shared/shared.module';
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
 })
-export class AppModule {}
+export class AppModule {
+}
