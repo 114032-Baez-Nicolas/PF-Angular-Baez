@@ -43,5 +43,6 @@ export const alumnosReducer = createReducer(
   on(AlumnosActions.deleteAlumnoSuccess, (state, { id }) => ({
     ...state,
     students: state.students.filter((a) => a.id !== id),
-  }))
+  })),
+  on(AlumnosActions.clearAlumnos, () => initialState)
 );

@@ -43,5 +43,6 @@ export const cursosReducer = createReducer(
   on(CursosActions.deleteCursoSuccess, (state, { id }) => ({
     ...state,
     courses: state.courses.filter((c) => c.id !== id),
-  }))
+  })),
+  on(CursosActions.clearCursos, () => initialState)
 );

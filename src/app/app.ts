@@ -1,7 +1,10 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { filter } from 'rxjs/operators';
+import { Usuario } from './core/models/usuario.interface';
 import { AuthService } from './core/services/auth.service';
+import { setAuthUser } from './core/store/auth/auth.actions';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +12,12 @@ import { AuthService } from './core/services/auth.service';
   standalone: false,
   styleUrl: './app.css',
 })
-export class App {
+export class App implements OnInit {
   sidenavOpened = true;
   mostrarLayout = true;
   isMobile = false;
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router, private authService: AuthService, private store: Store) {
     this.checkScreenSize();
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
@@ -22,6 +25,19 @@ export class App {
         this.mostrarLayout = this.debeMostrarLayout(event.url);
       });
     this.mostrarLayout = this.debeMostrarLayout(this.router.url);
+  }
+
+  ngOnInit(): void {
+    this.checkScreenSize();
+    this.loadUserFromLocalStorage();
+  }
+
+  private loadUserFromLocalStorage(): void {
+    const userJson = localStorage.getItem('authUser');
+    if (userJson) {
+      const user: Usuario = JSON.parse(userJson);
+      this.store.dispatch(setAuthUser({ payload: user }));
+    }
   }
 
   @HostListener('window:resize')

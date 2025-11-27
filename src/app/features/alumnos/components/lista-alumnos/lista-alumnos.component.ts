@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -14,13 +14,17 @@ import { EditarAlumnoDialogComponent } from '../editar-alumno-dialog/editar-alum
   styleUrls: ['./lista-alumnos.component.css'],
   standalone: false,
 })
-export class ListaAlumnosComponent implements OnInit {
+export class ListaAlumnosComponent implements OnInit, OnDestroy {
   alumnos$: Observable<Alumno[]>;
   loading$: Observable<boolean>;
   alumnosFiltrados: Alumno[] = [];
   busqueda: string = '';
 
-  constructor(private store: Store, private router: Router, private dialog: MatDialog) {
+  constructor(
+    private store: Store,
+    private router: Router,
+    private dialog: MatDialog
+  ) {
     this.alumnos$ = this.store.select(selectAlumnos);
     this.loading$ = this.store.select(selectAlumnosLoading);
   }
@@ -30,6 +34,10 @@ export class ListaAlumnosComponent implements OnInit {
     this.alumnos$.subscribe((alumnos) => {
       this.alumnosFiltrados = alumnos;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(AlumnosActions.clearAlumnos());
   }
 
   filtrarAlumnos(): void {

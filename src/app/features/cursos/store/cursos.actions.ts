@@ -16,5 +16,6 @@ export const CursosActions = createActionGroup({
     'Delete Curso': props<{ id: string }>(),
     'Delete Curso Success': props<{ id: string }>(),
     'Delete Curso Failure': props<{ error: any }>(),
+    'Clear Cursos': emptyProps(),
   },
 });

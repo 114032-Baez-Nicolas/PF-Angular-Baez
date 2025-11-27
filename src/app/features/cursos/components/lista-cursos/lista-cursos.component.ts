@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -14,7 +14,10 @@ import { EditarCursoDialogComponent } from '../editar-curso-dialog/editar-curso-
   styleUrls: ['./lista-cursos.component.css'],
   standalone: false,
 })
-export class ListaCursosComponent implements OnInit {
+export class ListaCursosComponent implements OnInit, OnDestroy {
+  ngOnDestroy(): void {
+    this.store.dispatch(CursosActions.clearCursos());
+  }
   cursos$: Observable<Curso[]>;
   loading$: Observable<boolean>;
   cursosFiltrados: Curso[] = [];

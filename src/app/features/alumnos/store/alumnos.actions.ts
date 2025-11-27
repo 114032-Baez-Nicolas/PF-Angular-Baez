@@ -16,5 +16,6 @@ export const AlumnosActions = createActionGroup({
     'Delete Alumno': props<{ id: string }>(),
     'Delete Alumno Success': props<{ id: string }>(),
     'Delete Alumno Failure': props<{ error: any }>(),
+    'Clear Alumnos': emptyProps(),
   },
 });
