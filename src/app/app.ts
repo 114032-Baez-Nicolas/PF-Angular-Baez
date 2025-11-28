@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { filter } from 'rxjs/operators';
 import { Usuario } from './core/models/usuario.interface';
 import { AuthService } from './core/services/auth.service';
+import { SessionManagerService } from './core/services/session-manager.service';
 import { setAuthUser, clearAuthUser } from './core/store/auth/auth.actions';
 
 @Component({
@@ -20,7 +21,8 @@ export class App implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private store: Store
+    private store: Store,
+    private sessionManager: SessionManagerService
   ) {
     this.checkScreenSize();
     this.router.events
@@ -39,15 +41,30 @@ export class App implements OnInit {
 
   private loadUserFromLocalStorage(): void {
     const userJson = localStorage.getItem('authUser');
-    if (userJson) {
-      const user: Usuario = JSON.parse(userJson);
-      this.store.dispatch(setAuthUser({ payload: user }));
+    const sessionExpiry = localStorage.getItem('sessionExpiry');
+
+    if (userJson && sessionExpiry) {
+      const now = Date.now();
+      const expiry = parseInt(sessionExpiry, 10);
+
+      if (now < expiry) {
+        const user: Usuario = JSON.parse(userJson);
+        this.store.dispatch(setAuthUser({ payload: user }));
+        this.sessionManager.updateSessionExpiry();
+      } else {
+        localStorage.removeItem('authUser');
+        localStorage.removeItem('sessionExpiry');
+      }
     }
   }
 
   private setupStorageListener(): void {
     window.addEventListener('storage', (event) => {
       if (event.key === 'logoutEvent' && event.newValue) {
+        this.store.dispatch(clearAuthUser());
+      }
+
+      if (event.key === 'sessionExpired' && event.newValue) {
         this.store.dispatch(clearAuthUser());
       }
 

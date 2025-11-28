@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, tap } from 'rxjs/operators';
+import { SessionManagerService } from '../../services/session-manager.service';
 import { setAuthUser, clearAuthUser } from './auth.actions';
 
 @Injectable()
@@ -10,6 +11,7 @@ export class AuthEffects {
   private actions$ = inject(Actions);
   private router = inject(Router);
   private store = inject(Store);
+  private sessionManager = inject(SessionManagerService);
 
   setAuthUser$ = createEffect(
     () =>
@@ -18,6 +20,7 @@ export class AuthEffects {
         tap(({ payload }) => {
           localStorage.setItem('authUser', JSON.stringify(payload));
           localStorage.setItem('authEvent', Date.now().toString());
+          this.sessionManager.updateSessionExpiry();
         })
       ),
     { dispatch: false }
@@ -29,6 +32,7 @@ export class AuthEffects {
         ofType(clearAuthUser),
         tap(() => {
           localStorage.removeItem('authUser');
+          localStorage.removeItem('sessionExpiry');
           localStorage.setItem('logoutEvent', Date.now().toString());
           this.router.navigate(['/login']);
         })
@@ -43,6 +47,10 @@ export class AuthEffects {
   private setupStorageListener(): void {
     window.addEventListener('storage', (event) => {
       if (event.key === 'logoutEvent' && event.newValue) {
+        this.router.navigate(['/login']);
+      }
+
+      if (event.key === 'sessionExpired' && event.newValue) {
         this.router.navigate(['/login']);
       }
 
