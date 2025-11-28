@@ -10,7 +10,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { RouterTestingModule } from '@angular/router/testing';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { provideMockStore } from '@ngrx/store/testing';
 import { ListaCursosComponent } from './lista-cursos.component';
 
 describe('ListaCursosComponent', () => {
@@ -21,9 +22,7 @@ describe('ListaCursosComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ListaCursosComponent],
       imports: [
-        HttpClientTestingModule,
         MatDialogModule,
-        RouterTestingModule,
         MatFormFieldModule,
         MatInputModule,
         MatIconModule,
@@ -33,6 +32,18 @@ describe('ListaCursosComponent', () => {
         MatCardModule,
         MatButtonModule,
         MatChipsModule,
+        MatProgressSpinnerModule,
+      ],
+      providers: [
+        provideMockStore({
+          initialState: {
+            courses: {
+              courses: [],
+              isLoading: false,
+              error: null,
+            },
+          },
+        }),
       ],
     }).compileComponents();
 

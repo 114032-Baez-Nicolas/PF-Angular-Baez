@@ -31,22 +31,22 @@ describe('AuthService', () => {
   });
 
   it('debería registrar un usuario nuevo', (done) => {
-    service.registrar('testuser', '1234').subscribe((res) => {
+    service.registrar('testuser@example.com', '1234').subscribe((res) => {
       expect(res.success).toBeTrue();
       done();
     });
-    const req = httpMock.expectOne('http://localhost:3000/users?username=testuser');
+    const req = httpMock.expectOne('http://localhost:3000/users?email=testuser@example.com');
     req.flush([]);
     const postReq = httpMock.expectOne('http://localhost:3000/users');
     postReq.flush(mockUsuario);
   });
 
   it('debería fallar si el usuario ya existe', (done) => {
-    service.registrar('testuser', '1234').subscribe((res) => {
+    service.registrar('testuser@example.com', '1234').subscribe((res) => {
       expect(res.success).toBeFalse();
       done();
     });
-    const req = httpMock.expectOne('http://localhost:3000/users?username=testuser');
+    const req = httpMock.expectOne('http://localhost:3000/users?email=testuser@example.com');
     req.flush([mockUsuario]);
   });
 
@@ -56,7 +56,7 @@ describe('AuthService', () => {
       expect(res.usuario?.username).toBe('testuser');
       done();
     });
-    const req = httpMock.expectOne('http://localhost:3000/users?username=testuser&password=1234');
+    const req = httpMock.expectOne('http://localhost:3000/users');
     req.flush([mockUsuario]);
   });
 
@@ -65,10 +65,8 @@ describe('AuthService', () => {
       expect(res.success).toBeFalse();
       done();
     });
-    const req = httpMock.expectOne(
-      'http://localhost:3000/users?username=testuser&password=wrongpass'
-    );
-    req.flush([]);
+    const req = httpMock.expectOne('http://localhost:3000/users');
+    req.flush([mockUsuario]);
   });
 
   it('debería guardar y limpiar usuario en localStorage', () => {

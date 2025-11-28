@@ -9,7 +9,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterTestingModule } from '@angular/router/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+import { NombreCompletoPipe } from '../../../../shared/pipes/nombre-completo.pipe';
 import { ListaAlumnosComponent } from './lista-alumnos.component';
 
 describe('ListaAlumnosComponent', () => {
@@ -18,11 +21,9 @@ describe('ListaAlumnosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ListaAlumnosComponent],
+      declarations: [ListaAlumnosComponent, NombreCompletoPipe],
       imports: [
-        HttpClientTestingModule,
         MatDialogModule,
-        RouterTestingModule,
         MatFormFieldModule,
         MatInputModule,
         MatIconModule,
@@ -31,6 +32,18 @@ describe('ListaAlumnosComponent', () => {
         FormsModule,
         MatCardModule,
         MatButtonModule,
+        MatProgressSpinnerModule,
+      ],
+      providers: [
+        provideMockStore({
+          initialState: {
+            students: {
+              students: [],
+              isLoading: false,
+              error: null,
+            },
+          },
+        }),
       ],
     }).compileComponents();
 
