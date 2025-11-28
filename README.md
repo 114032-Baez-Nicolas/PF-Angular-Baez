@@ -39,7 +39,7 @@ http://localhost:4200/login
 ### Credenciales de prueba
 
 **Con Username:**
-- **Email/Usuario:** `Nicolas`
+- **Email/Usuario:** `Nico`
 - **Contraseña:** `1234p`
 
 **Con Email:**
