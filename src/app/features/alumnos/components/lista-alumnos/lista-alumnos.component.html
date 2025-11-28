@@ -26,10 +26,12 @@
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
 
+        @if (esAdministrador()) {
         <button mat-raised-button color="primary" (click)="irANuevoAlumno()">
           <mat-icon>add</mat-icon>
           Nuevo Alumno
         </button>
+        }
       </div>
     </div>
 
@@ -63,6 +65,7 @@
                 <mat-icon>visibility</mat-icon>
                 Ver
               </button>
+              @if (esAdministrador()) {
               <button mat-button color="accent" (click)="editarAlumno(alumno)">
                 <mat-icon>edit</mat-icon>
                 Editar
@@ -71,6 +74,7 @@
                 <mat-icon>delete</mat-icon>
                 Eliminar
               </button>
+              }
             </mat-card-actions>
           </mat-card>
         }

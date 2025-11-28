@@ -35,7 +35,7 @@ export class AuthService {
           username: username.split('@')[0],
           email: username,
           password,
-          role: 'USER',
+          role: 'Usuario',
         };
         this.http.post<Usuario>(this.API_URL, nuevoUsuario).subscribe();
         return { success: true, message: 'Usuario registrado correctamente' };
@@ -80,5 +80,9 @@ export class AuthService {
 
   obtenerNombreUsuario(): string {
     return this.usuarioActualSubject.value?.username || '';
+  }
+
+  esAdministrador(): boolean {
+    return this.usuarioActualSubject.value?.role === 'Administrador';
   }
 }

@@ -70,13 +70,54 @@ export class LoginComponent implements OnInit {
 
   inicializarFormularios(): void {
     this.loginForm = this.fb.group({
-      username: ['testprueba@gmail.com', [Validators.required]],
-      password: ['1234p', [Validators.required]],
+      username: ['admin', [Validators.required]],
+      password: ['1234', [Validators.required]],
     });
 
     this.registroForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required, Validators.minLength(4)]],
+    });
+  }
+
+  mostrarCredenciales(): void {
+    const backgroundColor = this.isDarkMode ? '#1e1e1e' : '#ffffff';
+    const textColor = this.isDarkMode ? '#e0e0e0' : '#424242';
+    const cardBg = this.isDarkMode ? '#2d2d2d' : '#f5f5f5';
+    const adminBorderColor = this.isDarkMode ? '#90caf9' : '#1976d2';
+    const adminTitleColor = this.isDarkMode ? '#90caf9' : '#1976d2';
+    const adminCodeBg = this.isDarkMode ? '#1565c0' : '#e3f2fd';
+    const adminCodeColor = this.isDarkMode ? '#e3f2fd' : '#1976d2';
+    const userBorderColor = this.isDarkMode ? '#ffb74d' : '#f57c00';
+    const userTitleColor = this.isDarkMode ? '#ffb74d' : '#f57c00';
+    const userCodeBg = this.isDarkMode ? '#ef6c00' : '#fff3e0';
+    const userCodeColor = this.isDarkMode ? '#ffe0b2' : '#f57c00';
+
+    Swal.fire({
+      title: '🔑 Credenciales de Prueba',
+      html: `
+        <div style="text-align: left; padding: 10px;">
+          <div style="margin-bottom: 20px; padding: 16px; background: ${cardBg}; border-radius: 8px; border-left: 4px solid ${adminBorderColor};">
+            <p style="margin: 0 0 12px 0; font-weight: 600; font-size: 15px; color: ${adminTitleColor};">👨‍💼 Administrador</p>
+            <p style="margin: 8px 0; color: ${textColor}; font-size: 14px;"><strong>Usuario:</strong> <code style="background: ${adminCodeBg}; padding: 4px 10px; border-radius: 4px; color: ${adminCodeColor}; font-weight: 600; font-size: 13px;">admin</code></p>
+            <p style="margin: 8px 0; color: ${textColor}; font-size: 14px;"><strong>Contraseña:</strong> <code style="background: ${adminCodeBg}; padding: 4px 10px; border-radius: 4px; color: ${adminCodeColor}; font-weight: 600; font-size: 13px;">1234</code></p>
+          </div>
+          <div style="padding: 16px; background: ${cardBg}; border-radius: 8px; border-left: 4px solid ${userBorderColor};">
+            <p style="margin: 0 0 12px 0; font-weight: 600; font-size: 15px; color: ${userTitleColor};">👤 Usuario</p>
+            <p style="margin: 8px 0; color: ${textColor}; font-size: 14px;"><strong>Usuario:</strong> <code style="background: ${userCodeBg}; padding: 4px 10px; border-radius: 4px; color: ${userCodeColor}; font-weight: 600; font-size: 13px;">user</code></p>
+            <p style="margin: 8px 0; color: ${textColor}; font-size: 14px;"><strong>Contraseña:</strong> <code style="background: ${userCodeBg}; padding: 4px 10px; border-radius: 4px; color: ${userCodeColor}; font-weight: 600; font-size: 13px;">1234</code></p>
+          </div>
+        </div>
+      `,
+      confirmButtonText: 'Entendido',
+      confirmButtonColor: this.isDarkMode ? '#bb86fc' : '#3f51b5',
+      width: '500px',
+      background: backgroundColor,
+      color: textColor,
+      customClass: {
+        container: 'credenciales-modal-container',
+        popup: 'credenciales-modal-popup'
+      }
     });
   }
 

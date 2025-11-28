@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../../../core/services/auth.service';
 import { Alumno } from '../../models/alumno.interface';
 import { AlumnosActions, selectAlumnos, selectAlumnosLoading } from '../../store';
 import { EditarAlumnoDialogComponent } from '../editar-alumno-dialog/editar-alumno-dialog.component';
@@ -23,7 +24,8 @@ export class ListaAlumnosComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authService: AuthService
   ) {
     this.alumnos$ = this.store.select(selectAlumnos);
     this.loading$ = this.store.select(selectAlumnosLoading);
@@ -38,6 +40,10 @@ export class ListaAlumnosComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.store.dispatch(AlumnosActions.clearAlumnos());
+  }
+
+  esAdministrador(): boolean {
+    return this.authService.esAdministrador();
   }
 
   filtrarAlumnos(): void {

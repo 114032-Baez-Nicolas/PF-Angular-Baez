@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../../../core/services/auth.service';
 import { Curso } from '../../models/curso.interface';
 import { CursosActions, selectCursos, selectCursosLoading } from '../../store';
 import { EditarCursoDialogComponent } from '../editar-curso-dialog/editar-curso-dialog.component';
@@ -25,7 +26,8 @@ export class ListaCursosComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authService: AuthService
   ) {
     this.cursos$ = this.store.select(selectCursos);
     this.loading$ = this.store.select(selectCursosLoading);
@@ -42,6 +44,10 @@ export class ListaCursosComponent implements OnInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
     this.store.dispatch(CursosActions.clearCursos());
+  }
+
+  esAdministrador(): boolean {
+    return this.authService.esAdministrador();
   }
 
   filtrarCursos(): void {
