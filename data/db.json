@@ -1,47 +1,33 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": "4ce0ace6-471e-4d76-a311-a4a9dc05707a",
       "username": "admin",
       "email": "admin@gmail.com",
       "password": "1234",
-      "role": "ADMIN",
-      "nombre": "Administrador"
+      "nombre": "ADMIN",
+      "role": "Administrador"
     },
     {
-      "id": "2",
+      "id": "dbe2dabd-8e4c-4f36-b425-74e44c1ed395",
       "username": "user",
       "email": "user@gmail.com",
       "password": "1234",
-      "role": "USER",
-      "nombre": "Usuario"
+      "nombre": "USER",
+      "role": "Usuario"
     },
     {
-      "id": "3",
-      "username": "user2",
-      "email": "user2@gmail.com",
-      "password": "1234",
-      "role": "USER",
-      "nombre": "Usuario2"
-    },
-    {
-      "id": "4",
+      "id": "22119224-e141-4d36-9a1e-d68261805d93",
       "username": "testprueba@gmail.com",
       "email": "testprueba@gmail.com",
       "password": "1234p",
-      "role": "USER",
-      "nombre": "Nicolás"
-    },
-    {
-      "id": "527465fe-8530-428a-bd96-e18b971eec65",
-      "username": "osasprueba@gmail.com",
-      "password": "1234p",
-      "nombre": "osas"
+      "nombre": "Nicolas",
+      "role": "USER"
     }
   ],
   "courses": [
     {
-      "id": "1",
+      "id": "c101",
       "nombre": "Angular Básico",
       "descripcion": "En este curso aprenderás a construir aplicaciones web con Angular.",
       "fechaInicio": "2024-01-10T00:00:00.000Z",
@@ -49,7 +35,7 @@
       "estado": "activo"
     },
     {
-      "id": "2",
+      "id": "c102",
       "nombre": "TypeScript Avanzado",
       "descripcion": "Dominá TypeScript y sus características más potentes.",
       "fechaInicio": "2024-02-01T00:00:00.000Z",
@@ -57,7 +43,7 @@
       "estado": "activo"
     },
     {
-      "id": "3",
+      "id": "c103",
       "nombre": "RxJS en la Práctica",
       "descripcion": "Todo sobre programación reactiva con RxJS.",
       "fechaInicio": "2023-11-15T00:00:00.000Z",
