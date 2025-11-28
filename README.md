@@ -120,8 +120,8 @@ http://localhost:4200/login
 *Lista de alumnos con acciones CRUD y feature store*
 
 ### Redux DevTools - State Completo
-![Redux State](img/redux1.png)
-![Redux Cursos](img/redux2.png)
+![Redux State](img/redux1.png) 
+![Redux Cursos](img/redux2.png)   
 *Vista completa del state con auth global y feature stores (courses, students)*
 
 ### Redux DevTools - Error Handling
