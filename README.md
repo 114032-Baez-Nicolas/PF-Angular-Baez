@@ -112,10 +112,10 @@ http://localhost:4200/login
 ## 📸 Capturas de Pantalla
 
 ### Login
-![Login](img/login.png)
+![Login](img/log.png)
 
 ### Registro
-![Registro](img/register.png)
+![Registro](img/reg.png)
 
 ### Gestión de Cursos
 ![Gestión de Cursos](img/gestioncursos.png)
