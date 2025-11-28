@@ -111,32 +111,33 @@ http://localhost:4200/login
 
 ## 📸 Capturas de Pantalla
 
+```
 ### Login
-![Login](img/log.png)
+![Login](img/log.png)   
 *Sistema de autenticación con modo oscuro y login flexible (email o username)*
 
 ### Registro
-![Registro](img/reg.png)
+![Registro](img/reg.png)   
 *Formulario de registro de usuarios*
 
 ### Gestión de Cursos
-![Gestión de Cursos](img/gestioncursos.png)
+![Gestión de Cursos](img/gestioncursos.png)   
 *Lista de cursos con búsqueda, estados y loading de NgRx*
 
 ### Gestión de Alumnos
-![Gestión de Alumnos](img/gestionalumnos.png)
+![Gestión de Alumnos](img/gestionalumnos.png)   
 *Lista de alumnos con acciones CRUD y feature store*
 
 ### Redux DevTools - State Completo
-![Redux State](img/redux1.png)
+![Redux State](img/redux1.png)   
 *Vista completa del state con auth global y feature stores (courses, students)*
 
 ### Redux DevTools - Cursos Cargados
-![Redux Cursos](img/redux2.png)
+![Redux Cursos](img/redux2.png)   
 *Feature store de cursos con array de datos y loading state*
 
 ### Redux DevTools - Error Handling
-![Redux Error](img/reduxerror.png)
+![Redux Error](img/reduxerror.png)   
 *Manejo de errores en el state de Redux*
 ```
 
@@ -145,6 +146,7 @@ http://localhost:4200/login
 ## 📂 Estructura del Proyecto
 
 ```
+PF-Angular-Baez/
 src/app/
 ├── core/           # Servicios, guards, modelos, store
 ├── features/       # Módulos de funcionalidad
