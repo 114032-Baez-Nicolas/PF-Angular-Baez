@@ -126,7 +126,8 @@ http://localhost:4200/login
 
 ### Redux DevTools - Error Handling
 ![Redux Error](img/reduxerror.png)   
-*Manejo de errores en el state de Redux*
+*Manejo de errores en el state de Redux*  
+
 ---
 
 ## 📂 Estructura del Proyecto
