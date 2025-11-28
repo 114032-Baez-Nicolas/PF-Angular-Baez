@@ -23,20 +23,18 @@ export class AuthService {
 
   registrar(
     username: string,
-    password: string,
-    nombre: string
+    password: string
   ): Observable<{ success: boolean; message: string }> {
-    return this.http.get<Usuario[]>(`${this.API_URL}?username=${username}`).pipe(
+    return this.http.get<Usuario[]>(`${this.API_URL}?email=${username}`).pipe(
       map((usuarios) => {
         if (usuarios.length > 0) {
-          return { success: false, message: 'El usuario ya existe' };
+          return { success: false, message: 'El email ya existe' };
         }
         const nuevoUsuario: Usuario = {
           id: uuidv4(),
-          username,
+          username: username.split('@')[0],
           email: username,
           password,
-          nombre,
           role: 'USER',
         };
         this.http.post<Usuario>(this.API_URL, nuevoUsuario).subscribe();
@@ -47,20 +45,25 @@ export class AuthService {
   }
 
   login(
-    username: string,
+    usernameOrEmail: string,
     password: string
   ): Observable<{ success: boolean; message: string; usuario?: Usuario }> {
     return this.http
-      .get<Usuario[]>(`${this.API_URL}?username=${username}&password=${password}`)
+      .get<Usuario[]>(this.API_URL)
       .pipe(
         map((usuarios) => {
-          if (usuarios.length > 0) {
-            const usuario = usuarios[0];
+          const usuario = usuarios.find(
+            (u) =>
+              (u.email === usernameOrEmail || u.username === usernameOrEmail) &&
+              u.password === password
+          );
+
+          if (usuario) {
             localStorage.setItem(this.CURRENT_USER_KEY, JSON.stringify(usuario));
             this.usuarioActualSubject.next(usuario);
             return { success: true, message: 'Inicio de sesión exitoso', usuario };
           }
-          return { success: false, message: 'Usuario o contraseña incorrectos' };
+          return { success: false, message: 'Credenciales incorrectas' };
         }),
         catchError(() => of({ success: false, message: 'Error al iniciar sesión' }))
       );
@@ -76,6 +79,6 @@ export class AuthService {
   }
 
   obtenerNombreUsuario(): string {
-    return this.usuarioActualSubject.value?.nombre || '';
+    return this.usuarioActualSubject.value?.username || '';
   }
 }

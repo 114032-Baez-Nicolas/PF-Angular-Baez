@@ -7,7 +7,6 @@ import { AuthService } from '../../core/services/auth.service';
 import { ThemeService } from '../../core/services/theme.service';
 import * as AuthActions from '../../core/store/auth/auth.actions';
 import { selectIsAuth, selectUser } from '../../core/store/auth/auth.selectors';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -49,12 +48,24 @@ export class LoginComponent implements OnInit {
     this.inicializarFormularios();
   }
 
+  toggleTheme(): void {
+    this.themeService.toggleTheme();
+  }
+
+  toggleMostrarRegistro(): void {
+    this.mostrarRegistro = !this.mostrarRegistro;
+  }
+
   togglePasswordLogin(): void {
     this.hidePasswordLogin = !this.hidePasswordLogin;
   }
 
   togglePasswordRegistro(): void {
     this.hidePasswordRegistro = !this.hidePasswordRegistro;
+  }
+
+  cambiarModo(): void {
+    this.mostrarRegistro = !this.mostrarRegistro;
   }
 
   inicializarFormularios(): void {
@@ -64,7 +75,6 @@ export class LoginComponent implements OnInit {
     });
 
     this.registroForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.minLength(2)]],
       username: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required, Validators.minLength(4)]],
     });
@@ -95,8 +105,8 @@ export class LoginComponent implements OnInit {
   onRegistro(): void {
     if (this.registroForm.valid) {
       this.loading = true;
-      const { username, password, nombre } = this.registroForm.value;
-      this.authService.registrar(username, password, nombre).subscribe((resultado) => {
+      const { username, password } = this.registroForm.value;
+      this.authService.registrar(username, password).subscribe((resultado) => {
         setTimeout(() => {
           this.loading = false;
           if (resultado.success) {
@@ -119,20 +129,5 @@ export class LoginComponent implements OnInit {
         }, 1500);
       });
     }
-  }
-
-  cambiarModo(): void {
-    this.mostrarRegistro = !this.mostrarRegistro;
-    if (!this.mostrarRegistro) {
-      this.loginForm.patchValue({
-        username: 'testprueba@gmail.com',
-        password: '1234p',
-      });
-    }
-    this.registroForm.reset();
-  }
-
-  toggleTheme(): void {
-    this.themeService.toggleTheme();
   }
 }

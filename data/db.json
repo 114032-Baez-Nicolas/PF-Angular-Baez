@@ -5,7 +5,6 @@
       "username": "admin",
       "email": "admin@gmail.com",
       "password": "1234",
-      "nombre": "ADMIN",
       "role": "Administrador"
     },
     {
@@ -13,15 +12,13 @@
       "username": "user",
       "email": "user@gmail.com",
       "password": "1234",
-      "nombre": "USER",
       "role": "Usuario"
     },
     {
       "id": "22119224-e141-4d36-9a1e-d68261805d93",
-      "username": "testprueba@gmail.com",
+      "username": "Nico",
       "email": "testprueba@gmail.com",
       "password": "1234p",
-      "nombre": "Nicolas",
       "role": "USER"
     }
   ],
@@ -57,7 +54,7 @@
       "nombre": "Lucía",
       "apellido": "Fernández",
       "email": "lucia.fernandez@example.com",
-      "fechaInscripcion": "2024-09-10T09:00:00.000Z",
+      "fechaInscripcion": "2024-09-10T00:00:00.000Z",
       "activo": true
     },
     {
@@ -65,7 +62,7 @@
       "nombre": "Martín",
       "apellido": "Gómez",
       "email": "martin.gomez@example.com",
-      "fechaInscripcion": "2024-10-05T11:30:00.000Z",
+      "fechaInscripcion": "2024-10-05T00:00:00.000Z",
       "activo": false
     },
     {
@@ -73,7 +70,7 @@
       "nombre": "Sofía",
       "apellido": "López",
       "email": "sofia.lopez@example.com",
-      "fechaInscripcion": "2025-01-20T15:45:00.000Z",
+      "fechaInscripcion": "2025-01-20T00:00:00.000Z",
       "activo": true
     }
   ]

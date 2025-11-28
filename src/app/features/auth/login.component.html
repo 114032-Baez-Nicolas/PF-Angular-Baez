@@ -46,7 +46,7 @@
       @if (!mostrarRegistro) {
       <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <mat-form-field appearance="outline" class="campo-completo">
-          <mat-label>Correo</mat-label>
+          <mat-label>Correo o Usuario</mat-label>
           <input matInput formControlName="username" />
           <mat-icon matPrefix>mail</mat-icon>
         </mat-form-field>

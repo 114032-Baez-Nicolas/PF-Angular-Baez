@@ -6,8 +6,9 @@ import { AuthService } from './auth.service';
 const mockUsuario: Usuario = {
   id: 'user-uuid',
   username: 'testuser',
+  email: 'testuser@example.com',
   password: '1234',
-  nombre: 'Test User',
+  role: 'USER',
 };
 
 describe('AuthService', () => {
@@ -30,7 +31,7 @@ describe('AuthService', () => {
   });
 
   it('debería registrar un usuario nuevo', (done) => {
-    service.registrar('testuser', '1234', 'Test User').subscribe((res) => {
+    service.registrar('testuser', '1234').subscribe((res) => {
       expect(res.success).toBeTrue();
       done();
     });
@@ -41,7 +42,7 @@ describe('AuthService', () => {
   });
 
   it('debería fallar si el usuario ya existe', (done) => {
-    service.registrar('testuser', '1234', 'Test User').subscribe((res) => {
+    service.registrar('testuser', '1234').subscribe((res) => {
       expect(res.success).toBeFalse();
       done();
     });
