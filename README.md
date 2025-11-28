@@ -112,23 +112,23 @@ http://localhost:4200/login
 ## 📸 Capturas de Pantalla
 
 ### Login
-![Login](img/login.png)
+![Login](img/login.png)   
 *Sistema de autenticación con modo oscuro y login flexible (email o username)*
 
 ### Registro
-![Registro](img/register.png)
+![Registro](img/register.png)   
 *Formulario de registro de usuarios*
 
 ### Gestión de Cursos
-![Gestión de Cursos](img/gestioncursos.png)
+![Gestión de Cursos](img/gestioncursos.png)   
 *Lista de cursos con búsqueda, estados y loading de NgRx*
 
 ### Gestión de Alumnos
-![Gestión de Alumnos](img/gestionalumnos.png)
+![Gestión de Alumnos](img/gestionalumnos.png)   
 *Lista de alumnos con acciones CRUD y feature store*
 
 ### Redux DevTools - State Completo
-![Redux State](img/redux1.png)
+![Redux State](img/redux1.png)  
 *Vista completa del state con auth global y feature stores (courses, students)*
 
 ### Redux DevTools - Cursos Cargados
