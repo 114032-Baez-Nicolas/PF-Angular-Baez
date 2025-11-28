@@ -121,20 +121,13 @@ http://localhost:4200/login
 
 ### Redux DevTools - State Completo
 ![Redux State](img/redux1.png)  
-![Redux Cursos](img/redux2.png)   
 *Vista completa del state con auth global y feature stores (courses, students)*
+![Redux Cursos](img/redux2.png)   
+*Feature store de alumnos con array de datos y loading state*
 
 ### Redux DevTools - Error Handling
 ![Redux Error](img/reduxerror.png)   
 *Manejo de errores en el state de Redux*
-
-### Login
-![Login](img/login.png)   
-*Sistema de autenticación con modo oscuro y login flexible (email o username)*
-
-### Registro
-![Registro](img/register.png)   
-*Formulario de registro de usuarios*
 ---
 
 ## 📂 Estructura del Proyecto
