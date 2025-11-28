@@ -112,7 +112,7 @@ http://localhost:4200/login
 ## 📸 Capturas de Pantalla
 
 ### Login
-![Login](img/login.png)   
+![Login](img/login)   
 *Sistema de autenticación con modo oscuro y login flexible (email o username)*
 
 ### Registro
