@@ -378,24 +378,24 @@ body[color-scheme='dark'] .fecha-item mat-icon {
   color: #bb86fc !important;
 }
 
-body.dark-theme .sin-resultados,
-body[color-scheme='dark'] .sin-resultados {
+:host-context(.dark-theme) .sin-resultados,
+:host-context([color-scheme='dark']) .sin-resultados {
   background: linear-gradient(145deg, #1e1e1e, #2d2d30) !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
 }
 
-body.dark-theme .sin-resultados h2,
-body[color-scheme='dark'] .sin-resultados h2 {
+:host-context(.dark-theme) .sin-resultados h2,
+:host-context([color-scheme='dark']) .sin-resultados h2 {
   color: #bb86fc !important;
 }
 
-body.dark-theme .sin-resultados p,
-body[color-scheme='dark'] .sin-resultados p {
+:host-context(.dark-theme) .sin-resultados p,
+:host-context([color-scheme='dark']) .sin-resultados p {
   color: #9aa0a6 !important;
 }
 
-body.dark-theme .sin-resultados mat-icon,
-body[color-scheme='dark'] .sin-resultados mat-icon {
+:host-context(.dark-theme) .sin-resultados mat-icon,
+:host-context([color-scheme='dark']) .sin-resultados mat-icon {
   color: #666666 !important;
 }
 

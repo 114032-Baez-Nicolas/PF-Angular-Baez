@@ -14,14 +14,11 @@ export class CursosEffects {
       ofType(CursosActions.loadCursos),
       delay(1500),
       mergeMap(() => {
-        console.log('🔄 Cargando cursos desde el servidor...');
         return this.cursosService.obtenerCursos().pipe(
           map((cursos) => {
-            console.log('✅ Cursos cargados:', cursos);
             return CursosActions.loadCursosSuccess({ cursos });
           }),
           catchError((error) => {
-            console.error('❌ Error al cargar cursos:', error);
             return of(CursosActions.loadCursosFailure({ error }));
           })
         );
