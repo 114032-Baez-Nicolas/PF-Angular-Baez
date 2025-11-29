@@ -8,7 +8,7 @@ Aplicación web completa para administración académica con arquitectura Redux 
 
 ## 🎥 Video Demostración
 
-[Ver video del proyecto](URL_DEL_VIDEO)
+[Ver video del proyecto](https://www.youtube.com/watch?v=_AIxtnQBjq4)
 
 ---
 
