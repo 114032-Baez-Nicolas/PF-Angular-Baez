@@ -4,14 +4,14 @@
       "id": "4ce0ace6-471e-4d76-a311-a4a9dc05707a",
       "username": "admin",
       "email": "admin@gmail.com",
-      "password": "1234",
+      "password": "1234pixel",
       "role": "Administrador"
     },
     {
       "id": "dbe2dabd-8e4c-4f36-b425-74e44c1ed395",
       "username": "user",
       "email": "user@gmail.com",
-      "password": "1234",
+      "password": "1234pixel",
       "role": "Usuario"
     },
     {

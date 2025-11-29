@@ -70,8 +70,8 @@ export class LoginComponent implements OnInit {
 
   inicializarFormularios(): void {
     this.loginForm = this.fb.group({
-      username: ['admin', [Validators.required]],
-      password: ['1234', [Validators.required]],
+      username: ['admin@gmail.com', [Validators.required]],
+      password: ['1234pixel', [Validators.required]],
     });
 
     this.registroForm = this.fb.group({
@@ -99,13 +99,13 @@ export class LoginComponent implements OnInit {
         <div style="text-align: left; padding: 10px;">
           <div style="margin-bottom: 20px; padding: 16px; background: ${cardBg}; border-radius: 8px; border-left: 4px solid ${adminBorderColor};">
             <p style="margin: 0 0 12px 0; font-weight: 600; font-size: 15px; color: ${adminTitleColor};">👨‍💼 Administrador</p>
-            <p style="margin: 8px 0; color: ${textColor}; font-size: 14px;"><strong>Usuario:</strong> <code style="background: ${adminCodeBg}; padding: 4px 10px; border-radius: 4px; color: ${adminCodeColor}; font-weight: 600; font-size: 13px;">admin</code></p>
-            <p style="margin: 8px 0; color: ${textColor}; font-size: 14px;"><strong>Contraseña:</strong> <code style="background: ${adminCodeBg}; padding: 4px 10px; border-radius: 4px; color: ${adminCodeColor}; font-weight: 600; font-size: 13px;">1234</code></p>
+            <p style="margin: 8px 0; color: ${textColor}; font-size: 14px;"><strong>Usuario:</strong> <code style="background: ${adminCodeBg}; padding: 4px 10px; border-radius: 4px; color: ${adminCodeColor}; font-weight: 600; font-size: 13px;">admin@gmail.com</code></p>
+            <p style="margin: 8px 0; color: ${textColor}; font-size: 14px;"><strong>Contraseña:</strong> <code style="background: ${adminCodeBg}; padding: 4px 10px; border-radius: 4px; color: ${adminCodeColor}; font-weight: 600; font-size: 13px;">1234pixel</code></p>
           </div>
           <div style="padding: 16px; background: ${cardBg}; border-radius: 8px; border-left: 4px solid ${userBorderColor};">
             <p style="margin: 0 0 12px 0; font-weight: 600; font-size: 15px; color: ${userTitleColor};">👤 Usuario</p>
-            <p style="margin: 8px 0; color: ${textColor}; font-size: 14px;"><strong>Usuario:</strong> <code style="background: ${userCodeBg}; padding: 4px 10px; border-radius: 4px; color: ${userCodeColor}; font-weight: 600; font-size: 13px;">user</code></p>
-            <p style="margin: 8px 0; color: ${textColor}; font-size: 14px;"><strong>Contraseña:</strong> <code style="background: ${userCodeBg}; padding: 4px 10px; border-radius: 4px; color: ${userCodeColor}; font-weight: 600; font-size: 13px;">1234</code></p>
+            <p style="margin: 8px 0; color: ${textColor}; font-size: 14px;"><strong>Usuario:</strong> <code style="background: ${userCodeBg}; padding: 4px 10px; border-radius: 4px; color: ${userCodeColor}; font-weight: 600; font-size: 13px;">user@gmail.com</code></p>
+            <p style="margin: 8px 0; color: ${textColor}; font-size: 14px;"><strong>Contraseña:</strong> <code style="background: ${userCodeBg}; padding: 4px 10px; border-radius: 4px; color: ${userCodeColor}; font-weight: 600; font-size: 13px;">1234pixel</code></p>
           </div>
         </div>
       `,
