@@ -1,115 +1,23 @@
-# PF-Angular-Baez — Sistema de Gestión Educativa
+# PF-Angular-Baez – Sistema de Gestión Educativa
 
 **Nicolás Báez** | Proyecto Final - Angular CoderHouse
 
-Aplicación web completa para administración académica con arquitectura Redux: CRUD de Alumnos y Cursos, autenticación con NgRx Store (global + feature stores), Effects con loading states, guards de protección de rutas, gestión de sesión con expiración automática, API REST con JSON Server, arquitectura modular (Core, Features, Shared), lazy loading, testing unitario completo, formularios reactivos y Angular Material para interfaz moderna con soporte de tema claro/oscuro.
-
----
-
-## 🚀 Ejecución
-
-### Pasos para ejecutar
-
-1. **Clonar el repositorio**
-```bash
-git clone https://github.com/114032-Baez-Nicolas/PF-Angular-Baez.git
-cd PF-Angular-Baez
-```
-
-2. **Instalar dependencias**
-```bash
-npm install
-```
-
-3. **Ejecutar JSON Server (Base de datos)**
-```bash
-json-server --watch data/db.json --port 3000
-```
-
-4. **Ejecutar la aplicación Angular**
-```bash
-ng serve
-```
-
-5. **Abrir en el navegador**
-```
-http://localhost:4200/login
-```
-
-### Credenciales de prueba
-
-**Usuario:**
-- **Email/Usuario:** `user@gmail.com`
-- **Contraseña:** `1234pixel`
-- **Rol:** `Usuario`
-
----
-
-## 🛠️ Tecnologías
-
-- **Angular** 20.3.2
-- **Angular Material** - UI Components
-- **NgRx Store** - Gestión de estado con Redux
-- **NgRx Effects** - Manejo de side effects
-- **TypeScript** - Lenguaje principal
-- **JSON Server** - API REST simulada
-- **SweetAlert2** - Notificaciones
-- **UUID** - Identificadores únicos
-- **Jasmine** - Testing unitario
-- **RxJS** - Programación reactiva
-
----
-
-## ⚡ Funcionalidades
-
-### Redux/NgRx Store
-
-- ✅ **Store Global (Auth)**: Gestión centralizada de autenticación
-- ✅ **Feature Stores**: 
-  - `courses` (Cursos)
-  - `students` (Alumnos)
-- ✅ **Effects con Delay**: Loading en carga de datos
-- ✅ **Actions, Reducers, Selectors**: Patrón completo Redux
-- ✅ **Redux DevTools**: Integración para debugging
-
-### Autenticación y Sesión
-
-- ✅ Login con **email O username**
-- ✅ Registro de usuarios
-- ✅ Sesión con **expiración de 30 minutos** de inactividad
-- ✅ Persistencia en localStorage con validación
-- ✅ Guards protegiendo rutas privadas
-
-### Gestión Académica
-
-- ✅ **CRUD completo de Alumnos** con NgRx Store
-- ✅ **CRUD completo de Cursos** con NgRx Store
-- ✅ Búsqueda y filtrado en tiempo real
-- ✅ Loading "Procesando..." durante operaciones
-- ✅ Estados visuales (activo/inactivo)
-- ✅ Interfaz responsive con cards modernas
-
-### Arquitectura
-
-- ✅ **Lazy Loading** con rutas child
-- ✅ **Arquitectura modular**: Core, Features, Shared
-- ✅ **Testing completo**: 30 tests unitarios pasando
-- ✅ **Formularios reactivos** con validaciones
-- ✅ **Pipes personalizados**: nombreCompleto
-- ✅ **Directivas personalizadas**: tituloResaltado
+Aplicación web completa para administración académica con arquitectura Redux (NgRx), CRUD de Alumnos y Cursos, autenticación con roles (Admin/Usuario), gestión de sesión con expiración automática, API REST con JSON Server, testing unitario completo y Angular Material con tema claro/oscuro.
 
 ---
 
 ## 🎥 Video Demostración
 
-[Video demostrativo del proyecto](VIDEO)
+[Ver video del proyecto](URL_DEL_VIDEO)
 
 ---
 
 ## 📸 Capturas de Pantalla
 
+<div align="center">
+
 ### Login
-![Login](img/log.png)
+![Login](img/iniciar.png)
 
 ### Registro
 ![Registro](img/reg.png)
@@ -123,66 +31,168 @@ http://localhost:4200/login
 ### Redux DevTools
 ![Redux DevTools](img/redux1.png)
 
+</div>
+
+---
+
+## 🚀 Instalación y Ejecución
+
+### 1. Clonar el repositorio
+```bash
+git clone https://github.com/114032-Baez-Nicolas/PF-Angular-Baez.git
+cd PF-Angular-Baez
+```
+
+### 2. Instalar dependencias
+```bash
+npm install
+```
+
+### 3. Ejecutar JSON Server (Base de datos)
+```bash
+json-server --watch data/db.json --port 3000
+```
+
+### 4. Ejecutar la aplicación Angular
+```bash
+ng serve
+```
+
+### 5. Abrir en el navegador
+```
+http://localhost:4200
+```
+
+---
+
+## 🔐 Credenciales de Prueba
+
+**Administrador:**
+- Usuario: `admin@gmail.com`
+- Contraseña: `1234pixel`
+
+**Usuario:**
+- Usuario: `user@gmail.com`
+- Contraseña: `1234pixel`
+
+---
+
+## 🛠️ Tecnologías
+
+| Tecnología | Versión | Uso |
+|------------|---------|-----|
+| **Angular** | 20.3.2 | Framework principal |
+| **Angular Material** | 20.x | Componentes UI |
+| **NgRx Store** | 20.1.0 | Gestión de estado Redux |
+| **TypeScript** | 5.7.x | Lenguaje principal |
+| **JSON Server** | - | API REST simulada |
+| **SweetAlert2** | - | Notificaciones |
+| **Jasmine/Karma** | - | Testing unitario |
+| **RxJS** | - | Programación reactiva |
+
+---
+
+## ⚡ Funcionalidades
+
+### Sistema de Roles
+- ✅ **Administrador**: CRUD completo de cursos, alumnos y usuarios
+- ✅ **Usuario**: Solo visualización de detalles
+
+### Redux/NgRx Store
+- ✅ Store Global (Auth) con usuario logueado
+- ✅ Feature Stores (courses, students) con Effects
+- ✅ Actions, Reducers, Selectors
+- ✅ Loading states con "Procesando..."
+- ✅ Redux DevTools integrado
+
+### Autenticación y Sesión
+- ✅ Login con email O username
+- ✅ Registro de usuarios (rol Usuario por defecto)
+- ✅ Expiración de sesión (30 minutos de inactividad)
+- ✅ Guards protegiendo rutas privadas
+
+### Gestión Académica
+- ✅ CRUD completo de Alumnos
+- ✅ CRUD completo de Cursos
+- ✅ Búsqueda en tiempo real
+- ✅ Estados visuales (activo/inactivo)
+- ✅ Interfaz responsive con cards
+
+### Características Técnicas
+- ✅ Lazy Loading con rutas child
+- ✅ Arquitectura modular (Core, Features, Shared)
+- ✅ 30 tests unitarios
+- ✅ Formularios reactivos con validaciones
+- ✅ Pipes y directivas personalizadas
+- ✅ Tema claro/oscuro
+
 ---
 
 ## 📂 Estructura del Proyecto
 
 ```
 PF-Angular-Baez/
-src/app/
-├── core/           # Servicios, guards, modelos, store
-├── features/       # Módulos de funcionalidad
-│   ├── auth/       # Autenticación
-│   ├── alumnos/    # Gestión de alumnos
-│   ├── cursos/     # Gestión de cursos
-│   └── dashboard/  # Página de inicio
-├── shared/         # Pipes, directivas, componentes compartidos
-└── layout/         # Navbar, toolbar
+├── src/app/
+│   ├── core/              # Servicios, guards, modelos, store global
+│   │   ├── guards/        # AuthGuard
+│   │   ├── services/      # Auth, Cursos, Alumnos
+│   │   ├── store/         # Auth store (global)
+│   │   └── models/        # Interfaces
+│   ├── features/          # Módulos de funcionalidad
+│   │   ├── auth/          # Login, Registro
+│   │   ├── alumnos/       # CRUD Alumnos + Store
+│   │   ├── cursos/        # CRUD Cursos + Store
+│   │   └── dashboard/     # Página de inicio
+│   ├── shared/            # Pipes, directivas compartidas
+│   └── layout/            # Navbar, toolbar
+├── data/                  # Base de datos JSON Server
+│   └── db.json
+└── README.md
 ```
 
 ---
 
 ## 🧪 Testing
 
-### Ejecutar tests unitarios:
+### Ejecutar tests:
 ```bash
 ng test
 ```
 
-### Cobertura de testing:
-```
-✅ 30 tests unitarios (100% passing)
-✅ 3 servicios testeados (Auth, Cursos, Alumnos)
-✅ 6 componentes visuales testeados
-✅ 1 pipe testeado
-```
+### Cobertura:
+- ✅ **30 tests** unitarios (100% passing)
+- ✅ **3 servicios** testeados (Auth, Cursos, Alumnos)
+- ✅ **6 componentes** testeados
+- ✅ **1 pipe** testeado
 
 ---
 
-## 📋 Requisitos Proyecto Final 
+## 📋 Requisitos del Proyecto Final
 
-- [x] **NgRx Store Global** (auth) con usuario logueado
-- [x] **Feature Stores** (cursos, alumnos) con effects
-- [x] **Effects con delay** en carga de datos
-- [x] **Loading state** "Procesando..." durante operaciones
-- [x] **Testing unitario** - 30 tests
-- [x] **Actions, Reducers, Selectors** en todos los stores
-- [x] **Componente de Login** con autenticación
-- [x] **Guards** protegiendo rutas privadas
-- [x] **API REST** con JSON Server
-- [x] **Lazy Loading** y rutas child
-- [x] **CRUD completo** de alumnos y cursos
+- [x] NgRx Store Global (auth) con usuario logueado
+- [x] Feature Stores (cursos, alumnos) con Effects
+- [x] Effects con delay en carga de datos
+- [x] Loading state "Procesando..." durante operaciones
+- [x] Testing unitario completo (30 tests)
+- [x] Actions, Reducers, Selectors en todos los stores
+- [x] Componente de Login con autenticación
+- [x] Sistema de roles (Administrador/Usuario)
+- [x] Guards protegiendo rutas privadas
+- [x] API REST con JSON Server
+- [x] Lazy Loading y rutas child
+- [x] CRUD completo de alumnos y cursos
+- [x] Formularios reactivos con validaciones
+- [x] Arquitectura modular (Core/Features/Shared)
+- [x] Código limpio (sin console.log, comentarios, sintaxis moderna)
 
 ---
 
 ## ⚠️ Notas
 
-- La aplicación requiere **JSON Server** ejecutándose en puerto 3000
-- **No deployada** en Vercel/GitHub Pages debido a la dependencia de JSON Server local
-- Usar credenciales de prueba para acceder al sistema
-- El proyecto está optimizado para demostración académica
-- Redux DevTools: Instalar extensión de navegador para debugging
+- ✅ JSON Server debe estar ejecutándose en puerto **3000**
+- ✅ Instalar **Redux DevTools** en el navegador para debugging
+- ✅ Credenciales prellenadas para evaluación rápida
+- ✅ Proyecto optimizado para demostración académica
 
 ---
-
 **Nicolás Báez** - CoderHouse Angular
