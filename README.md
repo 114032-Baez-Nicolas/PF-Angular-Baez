@@ -38,10 +38,10 @@ http://localhost:4200/login
 
 ### Credenciales de prueba
 
-**Con Email:**
+**Usuario:**
 - **Email/Usuario:** `user@gmail.com`
 - **Contraseña:** `1234pixel`
-- **Rol:**: `Usuario`
+- **Rol:** `Usuario`
 
 ---
 
