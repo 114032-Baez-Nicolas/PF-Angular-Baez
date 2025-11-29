@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockStore } from '@ngrx/store/testing';
+import { AuthService } from '../../../../core/services/auth.service';
 import { NombreCompletoPipe } from '../../../../shared/pipes/nombre-completo.pipe';
 import { ListaAlumnosComponent } from './lista-alumnos.component';
 
@@ -23,6 +24,8 @@ describe('ListaAlumnosComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ListaAlumnosComponent, NombreCompletoPipe],
       imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
         MatDialogModule,
         MatFormFieldModule,
         MatInputModule,
@@ -35,6 +38,7 @@ describe('ListaAlumnosComponent', () => {
         MatProgressSpinnerModule,
       ],
       providers: [
+        AuthService,
         provideMockStore({
           initialState: {
             students: {

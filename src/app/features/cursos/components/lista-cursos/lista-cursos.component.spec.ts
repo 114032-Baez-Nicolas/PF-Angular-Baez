@@ -11,7 +11,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RouterTestingModule } from '@angular/router/testing';
 import { provideMockStore } from '@ngrx/store/testing';
+import { AuthService } from '../../../../core/services/auth.service';
 import { ListaCursosComponent } from './lista-cursos.component';
 
 describe('ListaCursosComponent', () => {
@@ -22,6 +24,8 @@ describe('ListaCursosComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ListaCursosComponent],
       imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
         MatDialogModule,
         MatFormFieldModule,
         MatInputModule,
@@ -35,6 +39,7 @@ describe('ListaCursosComponent', () => {
         MatProgressSpinnerModule,
       ],
       providers: [
+        AuthService,
         provideMockStore({
           initialState: {
             courses: {
