@@ -83,8 +83,8 @@ http://localhost:4200
 |------------|---------|-----|
 | **Angular** | 20.3.2 | Framework principal |
 | **Angular Material** | 20.x | Componentes UI |
-| **NgRx Store** | 20.1.0 | Gestión de estado Redux |
-| **TypeScript** | 5.7.x | Lenguaje principal |
+| **NgRx Store** | - | Gestión de estado Redux |
+| **TypeScript** | - | Lenguaje principal |
 | **JSON Server** | - | API REST simulada |
 | **SweetAlert2** | - | Notificaciones |
 | **Jasmine/Karma** | - | Testing unitario |
