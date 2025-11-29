@@ -160,7 +160,7 @@ ng test
 ```
 
 ### Cobertura:
-- ✅ **30 tests** unitarios (100% passing)
+- ✅ **30 tests** unitarios
 - ✅ **3 servicios** testeados (Auth, Cursos, Alumnos)
 - ✅ **6 componentes** testeados
 - ✅ **1 pipe** testeado
@@ -191,8 +191,8 @@ ng test
 
 - ✅ JSON Server debe estar ejecutándose en puerto **3000**
 - ✅ Instalar **Redux DevTools** en el navegador para debugging
-- ✅ Credenciales prellenadas para evaluación rápida
-- ✅ Proyecto optimizado para demostración académica
+- ✅ Usar credenciales de prueba para acceder al sistema
+- ✅ No deployada en Vercel/GitHub Pages debido a la dependencia de base de datos local
 
 ---
 **Nicolás Báez** - CoderHouse Angular
